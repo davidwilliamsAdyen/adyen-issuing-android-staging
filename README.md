@@ -1,0 +1,1 @@
+# adyen-google-pay-provisioning-android
