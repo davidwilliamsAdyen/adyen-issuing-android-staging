@@ -116,4 +116,4 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 
 ## License
 
-This SDK is available under the Apache License, Version 2.0. For more information, see the [LICENSE](https://github.com/Adyen/adyen-google-wallet-provisioning-android/blob/main/LICENSE) file.
+This SDK is available under the Apache License, Version 2.0. For more information, see the [LICENSE](https://github.com/Adyen/adyen-google-pay-provisioning-android/blob/main/LICENSE) file.
