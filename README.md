@@ -96,7 +96,7 @@ Override the `onActivityResult()` for your `Activity` (or modify your existing `
 
 ```kotlin
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (cardProvisioning.onActivityResult(requestCode, resultCode, data)) {
+        if (!cardProvisioning.onActivityResult(requestCode, resultCode, data)) {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
@@ -111,7 +111,7 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 ## See also
 
 * [Complete Documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
-* [SDK Reference Adyen Apple Pay Provisioning](https://adyen.github.io/adyen-google-wallet-provisioning-android/0.0.0/AdyenGoogleWalletProvisioning/documentation/adyengooglewalletprovisioning/)
+* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-wallet-provisioning-android/0.0.0/AdyenGoogleWalletProvisioning/documentation/adyengooglewalletprovisioning/)
 * [Data security at Adyen](https://docs.adyen.com/development-resources/adyen-data-security)
 
 ## License
