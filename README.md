@@ -10,15 +10,15 @@ The SDK is available either through [Maven Central][maven] or via manual install
 
 1. Import the SDK by adding this line to your `build.gradle` file.
 ```kotlin
-implementation("com.adyen.issuing:provisioning:<latest-version>")
+implementation("com.adyen.issuing:provisioning:0.0.1")
 ```
 
 ### Import manually
 
-1. Copy the SDK package `provisioning-<latest-version>.aar` to the `/libs` folder in your module.
+1. Copy the SDK package `provisioning-0.0.1.aar` to the `/libs` folder in your module.
 2. Import the SDK by adding this line to your module `build.gradle` file.
 ```kotlin
-implementation("com.adyen.issuing:provisioning:<latest-version>@aar")
+implementation("com.adyen.issuing:provisioning:0.0.1@aar")
 ```
 
 ## Usage
