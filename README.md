@@ -101,7 +101,7 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 ## See also
 
 * [Complete Documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
-* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.0/AdyenGoogleWalletProvisioning//)
+* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.0/AdyenGoogleWalletProvisioning/)
 
 ## License
 
