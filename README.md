@@ -96,11 +96,11 @@ Override the `onActivityResult()` for your `Activity` (or modify your existing `
 
 [//]: # (TODO: Ensure all the following URLs point to actual documentation  )
 
-For more documentation refer to our [complete documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
+For more documentation refer to our [Full Documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
 
 ## See also
 
-* [Complete Documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
+* [Full Documentation]([https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.0/Api/))
 * [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.0/AdyenGoogleWalletProvisioning/)
 
 ## License
