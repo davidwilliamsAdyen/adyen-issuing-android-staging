@@ -1,0 +1,3 @@
+## Changes
+- The `canProvision` API function now returns a `CanBeProvisioned` result for partially provisioned cards (instead of returning `AlreadyExistsInWallet`).
+- The `provision` API function can now complete provisioning of partially provisioned cards.

@@ -10,15 +10,15 @@ The SDK is available either through [Maven Central][maven] or via manual install
 
 1. Import the SDK by adding this line to your `build.gradle` file.
 ```kotlin
-implementation("com.adyen.issuing:provisioning:0.1.0")
+implementation("com.adyen.issuing:provisioning:0.1.1")
 ```
 
 ### Import manually
 
-1. Copy the SDK package `adyen-provisioning-0.1.0.aar` to the `/libs` folder in your module.
+1. Copy the SDK package `adyen-provisioning-0.1.1.aar` to the `/libs` folder in your module.
 2. Import the SDK by adding this line to your module `build.gradle` file.
 ```kotlin
-implementation("com.adyen.issuing:provisioning:0.1.0@aar")
+implementation("com.adyen.issuing:provisioning:0.1.1@aar")
 ```
 
 ## Usage
@@ -111,7 +111,7 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 ## See also
 
 * [Complete Documentation](https://docs.adyen.com/issuing/digital-wallets/google-wallet-provisioning/)
-* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.0/AdyenGoogleWalletProvisioning//)
+* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.1.1/AdyenGoogleWalletProvisioning//)
 * [Data security at Adyen](https://docs.adyen.com/development-resources/adyen-data-security)
 
 ## License
