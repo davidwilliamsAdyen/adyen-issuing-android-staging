@@ -1,0 +1,38 @@
+# Github action to deploy documentation to Github Pages
+name: Deploy Docs 🚀
+on:
+  push:
+    branches:
+      - 'main'
+
+permissions: write-all
+
+jobs:
+  Deploy:
+    runs-on: macos-13
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set current marketing version
+      run: echo "::set-output name=MARKETING_VERSION::$(cat version.txt)"
+      id: get-current-marketing-version
+
+    - name: Deploy html docs to current version
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html
+        destination_dir: ./${{ steps.get-current-marketing-version.outputs.MARKETING_VERSION }}/AdyenGoogleWalletProvisioning
+        enable_jekyll: true
+
+    - name: Deploy Full Documentation to current version
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/apiDocumentation
+        destination_dir: ./${{ steps.get-current-marketing-version.outputs.MARKETING_VERSION }}/Api
+        enable_jekyll: true
