@@ -1,19 +1,27 @@
-# Adyen Google Wallet Provisioning
+# Adyen Issuing Android
+
+This is the home page of the Adyen Issuing SDKs.
+
+The repository contains the following SDKs:
+
+- [Adyen Google Wallet Provisioning](#adyen-google-wallet-provisioning)
+
+## Adyen Google Wallet Provisioning
 
 `Adyen Google Wallet Provisioning` Android SDK simplifies integration with Google Wallet.
 
-## Installation
+### Installation
 
 The SDK is available from [Maven Central](https://central.sonatype.com/artifact/com.adyen.issuing/provisioning).
 
-### Import from Maven Central
+#### Import from Maven Central
 
 1. Import the SDK by adding this line to your `build.gradle` file.
 ```kotlin
-implementation("com.adyen.issuing:provisioning:0.3.2")
+implementation("com.adyen.issuing:provisioning:0.3.3")
 ```
 
-## Usage
+### Usage
 
 The SDK interaction is performed through calls to an instance of `CardProvisioning`. This instance is provided by a static function of the `CardProvisioning` class:
 
@@ -32,7 +40,7 @@ suspend fun createSdkOutput(): GetSdkOutputResult
 suspend fun provision(sdkInput: String, cardDisplayName: String, cardAddress: CardAddress): ProvisionResult
 ```
 
-### Creating a provisioning client instance
+#### Creating a provisioning client instance
 
 Perform a `GET` request to endpoint `/paymentInstruments/{paymentInstrumentId}/networkTokenActivationData` from your backend. The response contains `sdkInput` data.
 
@@ -52,18 +60,18 @@ val cardProvisioning = when(result) {
 }
 ```
 
-### Checking if a card can be provisioned
+#### Checking if a card can be provisioned
 
 Check if the cardholder can add a payment card to their Google Wallet.
 ```kotlin
 val canProvision = cardProvisioning.canProvision() == CanProvisionResult.CanBeProvisioned
 ```
 
-### Initiate card provisioning
+#### Initiate card provisioning
 
 When the cardholder opts to add a card to Google Wallet, initiate provisioning by performing the following steps:
 
-1. Make a call to `cardProvisioning.createSdkOuput()` to retrieve the `sdkOuput` string required for step 2.
+1. Make a call to `cardProvisioning.createSdkOuput()` to retrieve the `sdkOuput` string required for step 2. At this point, it is advisable to prevent the user from making further provisioning attempts (e.g. by disabling the `Add to Google Wallet` button) until the provisioning flow completes or is terminated.
 2. Make a `POST` `paymentInstruments/{paymentInstrumentId}/networkTokenActivationData` request from your backend to provision the payment instrument. The body must contain the `sdkOuput` obtained from step 1. The response contains the `sdkInput` object.
 3. Make a call to `cardProvisioning.provision()` passing the `sdkInput` value plus the cardholder name string and an instance of `CardAddress`:
 ```kotlin
@@ -80,10 +88,10 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 
 ## See also
 
-* [Full Documentation](https://adyen.github.io/adyen-google-pay-provisioning-android/0.3.2/Api/)
-* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-google-pay-provisioning-android/0.3.2/AdyenGoogleWalletProvisioning//)
+* [Full Documentation](https://adyen.github.io/adyen-issuing-android/0.3.3/Api/)
+* [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-issuing-android/0.3.3/AdyenGoogleWalletProvisioning//)
 * [Data security at Adyen](https://docs.adyen.com/development-resources/adyen-data-security)
 
 ## License
 
-This SDK is available under the Apache License, Version 2.0. For more information, see the [LICENSE](https://github.com/Adyen/adyen-google-pay-provisioning-android/blob/main/LICENSE) file.
+This SDK is available under the Apache License, Version 2.0. For more information, see the [LICENSE](https://github.com/Adyen/adyen-issuing-android/blob/main/LICENSE) file.
