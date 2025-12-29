@@ -9,7 +9,7 @@ lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.2"
 
 [libraries]
-adyen-provisioning = { group = "com.adyen.issuing", name = "provisioning", version.ref = "provisioning" }
+adyen-provisioning-sdk = { group = "com.adyen.issuing.provisioning", name = "provisioning-sdk", version.ref = "provisioning" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
