@@ -46,7 +46,7 @@ To use this example as a reference for your own integration:
 
 This example app is distributed under the MIT License.
 
-[shield.license.image]: https://img.shields.io/badge/License-MIT-yellow.svg
+[shield.license.image]: https://img.shields.io/badge/License-MIT-green.svg
 [shield.license.link]: LICENSE
-[readme.provisioning.sdk]: ../provisioning/sdk/README_TEMPLATE.md
-[readme.provisioning.sessions]: ../provisioning/sessions/README_TEMPLATE.md
+[readme.provisioning.sdk]: ../provisioning/sdk/README.md
+[readme.provisioning.sessions]: ../provisioning/sessions/README.md
