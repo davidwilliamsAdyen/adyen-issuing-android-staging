@@ -5,8 +5,8 @@ This example application demonstrates how to integrate the Adyen Issuing Android
 
 It showcases the usage of two key libraries:
 
-*   **[Provisioning SDK][readme.provisioning.sdk]**: Provides basic functionality for provisioning Adyen issued cards to Google Wallet. Look at the class [ProvisioningSdkRepository](src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsdk/repository/ProvisioningSdkRepository.kt) for example usage.
-*   **[Provisioning Session-based SDK][readme.provisioning.sessions]**: Provides a higher level interface which manages both the provisioning session lifecycle and the communication with the Adyen backend.Look at the class [ProvisioningSessionsRepository](src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsessions/repository/ProvisioningSessionsRepository.kt) for example usage.
+*   **[Provisioning SDK][readme.provisioning.sdk]**: Provides basic functionality for provisioning Adyen issued cards to Google Wallet. Look at the class [ProvisioningSdkRepository](example/src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsdk/repository/ProvisioningSdkRepository.kt) for example usage.
+*   **[Provisioning Session-based SDK][readme.provisioning.sessions]**: Provides a higher level interface which manages both the provisioning session lifecycle and the communication with the Adyen backend.Look at the class [ProvisioningSessionsRepository](example/src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsessions/repository/ProvisioningSessionsRepository.kt) for example usage.
 
 ## Purpose
 
