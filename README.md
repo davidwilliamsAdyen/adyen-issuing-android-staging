@@ -16,7 +16,7 @@ The repository also contains an [example app][readme.example.app] which demonstr
 
 ## License
 
-The SDKs are available under the Apache License, Version 2.0. For more information, see the [LICENSE][shield.license.link] file. 
+The SDKs are available under the Apache License, Version 2.0. For more information, see the [LICENSE][shield.license.link] file.<br>
 The example app is available under the MIT license. For more information see the example app [LICENSE][license.example.app] file.
 
 [header.image]: docs/resources/adyen-issuing-android.png
