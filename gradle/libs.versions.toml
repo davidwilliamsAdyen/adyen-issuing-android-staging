@@ -1,7 +1,7 @@
 [versions]
 android-gradle = "8.13.2" # make sure to update version in libs.versions.toml and buildLibs.versions.toml as well.
 compose-runtime = "1.10.0"
-provisioning = "0.3.4"
+provisioning = "0.3.5"
 kotlin = "2.3.0"
 material3 = "1.4.0"
 coreKtx = "1.7.0"
@@ -10,6 +10,7 @@ activityCompose = "1.12.2"
 
 [libraries]
 adyen-provisioning-sdk = { group = "com.adyen.issuing.provisioning", name = "provisioning-sdk", version.ref = "provisioning" }
+adyen-provisioning-sessions = { group = "com.adyen.issuing.provisioning", name = "provisioning-sessions", version.ref = "provisioning" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }

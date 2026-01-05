@@ -66,6 +66,7 @@ android {
 
 dependencies {
     implementation(libs.adyen.provisioning.sdk)
+    implementation(libs.adyen.provisioning.sessions)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

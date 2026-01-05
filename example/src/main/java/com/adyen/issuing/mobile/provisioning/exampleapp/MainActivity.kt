@@ -25,9 +25,12 @@ import com.adyen.issuing.mobile.provisioning.exampleapp.viewmodel.MainViewModelF
 
 class MainActivity : ComponentActivity() {
 
-    // Create the MainViewModel and pass in the Activity provider.
+    // Create the MainViewModel and pass in the app certificate and Activity provider.
     private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory { this }
+        MainViewModelFactory(
+            applicationCertificateInputStream = resources.openRawResource(R.raw.fake_app_cert),
+            activityProvider = { this }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +45,8 @@ class MainActivity : ComponentActivity() {
                     MainScreen(
                         card = cardState,
                         lastFour = "1234",
-                        onAddToWalletClicked = viewModel::provisionCard
+                        onAddToWalletClicked = viewModel::provisionCard,
+                        onMethodSelected = viewModel::onProvisioningMethodSelected
                     )
                 }
             }

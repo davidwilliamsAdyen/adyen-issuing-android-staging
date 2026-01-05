@@ -13,4 +13,6 @@
     <string name="does_not_support_google_pay">Card does not support Google Pay</string>
     <string name="manage_card_label">Manage Card</string>
     <string name="account">Account •••• %1$s</string>
+    <string name="sdk">SDK Library</string>
+    <string name="sessions">Sessions Library</string>
 </resources>

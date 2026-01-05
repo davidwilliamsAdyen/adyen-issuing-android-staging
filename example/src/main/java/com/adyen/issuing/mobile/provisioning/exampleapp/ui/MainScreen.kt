@@ -15,14 +15,22 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -34,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.adyen.issuing.mobile.provisioning.exampleapp.R
 import com.adyen.issuing.mobile.provisioning.exampleapp.data.CardState
+import com.adyen.issuing.mobile.provisioning.exampleapp.data.ProvisioningMethod
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,6 +51,7 @@ fun MainScreen(
     lastFour: String,
     card: CardState,
     onAddToWalletClicked: () -> Unit,
+    onMethodSelected: (ProvisioningMethod) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -75,6 +85,10 @@ fun MainScreen(
                     CardState.Loading -> Loading()
                     is CardState.Error -> CardLabel(card.message ?: "An error occurred")
                 }
+                Spacer(Modifier.height(20.dp))
+                ProvisioningMethodSelectionButtons(
+                    onMethodSelected = onMethodSelected
+                )
             }
         }
     }
@@ -121,12 +135,46 @@ fun CardLabel(@StringRes stringResourceId: Int) {
     CardLabel(label = stringResource(id = stringResourceId))
 }
 
+@Composable
+fun ProvisioningMethodSelectionButtons(
+    modifier: Modifier = Modifier,
+    onMethodSelected: (ProvisioningMethod) -> Unit
+) {
+    var selectedIndex by remember { mutableIntStateOf(0) }
+    SingleChoiceSegmentedButtonRow(
+        modifier = modifier
+            .padding(horizontal = 40.dp)
+            .fillMaxWidth()
+    ) {
+        ProvisioningMethod.entries.forEachIndexed { index, provisioningMethod ->
+            SegmentedButton(
+                shape = SegmentedButtonDefaults.itemShape(
+                    index = index,
+                    count = ProvisioningMethod.entries.size,
+                ),
+                onClick = {
+                    selectedIndex = index
+                    onMethodSelected(ProvisioningMethod.entries[index])
+                },
+                selected = selectedIndex == index,
+                label = {
+                    Text(
+                        text = stringResource(provisioningMethod.labelResource),
+                        maxLines = 1,
+                    )
+                },
+            )
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
     MainScreen(
         lastFour = "1234",
         card = CardState.NotAddedToWallet,
-        onAddToWalletClicked = {}
+        onAddToWalletClicked = {},
+        onMethodSelected = {},
     )
 }
