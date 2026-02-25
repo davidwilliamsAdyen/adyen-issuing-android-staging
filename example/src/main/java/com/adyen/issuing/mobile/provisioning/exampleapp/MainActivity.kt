@@ -25,12 +25,11 @@ import com.adyen.issuing.mobile.provisioning.exampleapp.viewmodel.MainViewModelF
 
 class MainActivity : ComponentActivity() {
 
-    // Create the MainViewModel and pass in the app certificate and Activity provider.
+    // Create the MainViewModel and pass in the Activity provider.
+    // The Activity provider is a lambda that returns the current Activity.
+    // This is used by the provisioning SDK to launch the Google Wallet add-to-wallet flow.
     private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(
-            applicationCertificateInputStream = resources.openRawResource(R.raw.fake_app_cert),
-            activityProvider = { this }
-        )
+        MainViewModelFactory { this }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +45,7 @@ class MainActivity : ComponentActivity() {
                         card = cardState,
                         lastFour = "1234",
                         onAddToWalletClicked = viewModel::provisionCard,
-                        onMethodSelected = viewModel::onProvisioningMethodSelected
+                        onRetryClicked = viewModel::retry
                     )
                 }
             }

@@ -1,52 +1,37 @@
-[![License][shield.license.image]][shield.license.link]
 # Adyen Google Wallet Provisioning Example App
 
-This example application demonstrates how to integrate the Adyen Issuing Android SDKs to add Google Wallet card provisioning functionality to your Android banking application.
+This example application demonstrates how to integrate the Adyen Issuing Provisioning SDK to enable push provisioning of cards to Google Wallet.
 
-It showcases the usage of two key libraries:
+## Overview
 
-*   **[Provisioning SDK][readme.provisioning.sdk]**: Provides basic functionality for provisioning Adyen issued cards to Google Wallet. Look at the class [ProvisioningSdkRepository](example/src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsdk/repository/ProvisioningSdkRepository.kt) for example usage.
-*   **[Provisioning Session-based SDK][readme.provisioning.sessions]**: Provides a higher level interface which manages both the provisioning session lifecycle and the communication with the Adyen backend.Look at the class [ProvisioningSessionsRepository](example/src/main/java/com/adyen/issuing/mobile/provisioning/exampleapp/provisioningsessions/repository/ProvisioningSessionsRepository.kt) for example usage.
+The app showcases the following key steps:
 
-## Purpose
+1.  **Fetching Activation Data**: Retrieving the necessary card activation data from your backend.
+2.  **Initializing the SDK**: Creating a `CardProvisioning` client using the activation data.
+3.  **Checking Provisioning Status**: Determining if a card can be added to Google Wallet or if it's already added.
+4.  **Provisioning the Card**: Initiating the "Add to Google Wallet" flow and handling the Opaque Payment Card (OPC) data exchange.
 
-The primary goal of this app is to provide developers with reference implementations for both the **Provisioning SDK** and **Provisioning Sessions** which demonstrate how to:
+## Key Components
 
-1.  Initialize a provisioning session.
-2.  Check if a card can be provisioned to Google Wallet.
-3.  Provision a card to Google Wallet.
-
-## Important Note: Non-Functional State
-
-**Please be aware that this example app is provided in a non-functional state.**
-
-To successfully provision cards, the SDK requires:
-
-*   Integration between your backend and the Adyen API.
-*   For Provisioning Sessions: A valid Application Certificate
-
-Credentials for Adyen integration are strictly controlled and are only available by contacting Adyen directly. The example app currently uses **fake/mock values** for these credentials. Consequently, running the provisioning flows within this app will result in error responses from the SDK.
-
-This is expected behavior and is intended to demonstrate error handling and the overall flow without exposing sensitive credentials.
+*   **`MainViewModel.kt`**: Contains the core logic for interacting with the Provisioning SDK. It handles the state management and the provisioning flow.
+*   **`Backend.kt`**: Defines the interface for backend communication. In a real app, this would make network requests to your server to fetch activation data and OPC data.
+*   **`MockBackend.kt`**: A mock implementation of the `Backend` interface for demonstration purposes.
+*   **`MainActivity.kt`**: The entry point of the application, which sets up the UI and provides the `Activity` context to the SDK.
 
 ## Getting Started
 
-To use this example as a reference for your own integration:
+1.  **Request the Google Tap and Pay SDK and Host it Locally**: See [Get the Google Push Provisioning API](../apiDocumentation/README.md#get-the-google-push-provisioning-api) for instructions on how to request the SDK and host it using maven local.
+2.  **Clone the repository**.
+3.  **Open the project in Android Studio**.
+4.  **Build and run the `example` module** on an Android device or emulator with Google Play Services.
 
-1.  **Explore the Code**: Examine the source code to understand how the `Provisioning Sessions SDK` and `Provisioning SDK` are initialized and used.
-2.  **Review the Flow**: Follow the user journey from session creation to the provisioning result handling.
-3.  **Contact Adyen**: To implement this in your own production application, please contact Adyen support to obtain your unique API keys and Application Certificate.
+## Important Notes
 
-## Prerequisites
+*   **Mock Data**: Tapping the "Add to Google Wallet" button will result in an error because the mocked Opaque Payment Card (OPC) data is not valid for actual provisioning with Google.
+*   **Backend Integration**: The `MockBackend` is for demonstration only. You must implement a real backend service to securely fetch card data from Adyen's APIs.
+*   **Security**: Never hardcode sensitive card data in your application. Always fetch it securely from your backend.
+*   **App Architecture**: This sample app demonstrates SDK integration only. The architecture, project structure, coding conventions, and UI design are illustrative and do not represent required or preferred patterns from Adyen.
 
-*   Android Studio
-*   An Android device or emulator with Google Play Services installed.
+## Resources
 
-## License
-
-This example app is distributed under the MIT License.
-
-[shield.license.image]: https://img.shields.io/badge/License-MIT-green.svg
-[shield.license.link]: LICENSE
-[readme.provisioning.sdk]: ../provisioning/sdk/README.md
-[readme.provisioning.sessions]: ../provisioning/sessions/README.md
+*   [Adyen Issuing Documentation](https://docs.adyen.com/issuing)
