@@ -20,7 +20,7 @@ The app showcases the following key steps:
 
 ## Getting Started
 
-1.  **Request the Google Tap and Pay SDK and Host it Locally**: See [Get the Google Push Provisioning API](../apiDocumentation/README.md#get-the-google-push-provisioning-api) for instructions on how to request the SDK and host it using maven local.
+1.  **Request the Google Tap and Pay SDK and Host it Locally**: See [Get the Google Push Provisioning API](../docs/apiDocumentation/README.md#get-the-google-push-provisioning-api) for instructions on how to request the SDK and host it using maven local.
 2.  **Clone the repository**.
 3.  **Open the project in Android Studio**.
 4.  **Build and run the `example` module** on an Android device or emulator with Google Play Services.
