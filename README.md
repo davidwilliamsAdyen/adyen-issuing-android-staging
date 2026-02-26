@@ -99,7 +99,7 @@ For more documentation refer to our [complete documentation](https://docs.adyen.
 
 ## See also
 
-* [Example App](../../example/README.md)
+* [Example App](example/README.md)
 * [Full Documentation](https://adyen.github.io/adyen-issuing-android/0.4.0-alpha01/Api/)
 * [SDK Reference Adyen Google Pay Provisioning](https://adyen.github.io/adyen-issuing-android/0.4.0-alpha01/AdyenGoogleWalletProvisioning//)
 * [Data security at Adyen](https://docs.adyen.com/development-resources/adyen-data-security)
