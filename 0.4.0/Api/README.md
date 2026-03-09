@@ -118,6 +118,7 @@ val result = client.canProvision()
 when(result) {
     is CanProvisionResult.CanBeProvisioned -> displayGoogleWalletButton()
     is CanProvisionResult.CannotBeProvisioned.AlreadyExistsInWallet -> hideGoogleWalletButton()
+    is CanProvisionResult.CannotBeProvisioned.ApiError -> throw Exception("Google API Error: ${result.statusCode})
     is CanProvisionResult.CannotBeProvisioned.Error -> throw result.throwable
     is CanProvisionResult.CannotBeProvisioned.UnknownFailure -> throw Exception("Unknown failure")
 }
