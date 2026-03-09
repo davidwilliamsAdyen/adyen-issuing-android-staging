@@ -15,22 +15,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -42,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.adyen.issuing.mobile.provisioning.exampleapp.R
 import com.adyen.issuing.mobile.provisioning.exampleapp.data.CardState
-import com.adyen.issuing.mobile.provisioning.exampleapp.data.ProvisioningMethod
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,7 +43,7 @@ fun MainScreen(
     lastFour: String,
     card: CardState,
     onAddToWalletClicked: () -> Unit,
-    onMethodSelected: (ProvisioningMethod) -> Unit,
+    onRetryClicked: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -76,6 +68,10 @@ fun MainScreen(
                 Spacer(Modifier.height(40.dp))
                 AdyenCardDisplay(lastFour = lastFour)
                 Spacer(Modifier.height(40.dp))
+                // Display the appropriate UI based on the card state.
+                // If the card is not added to the wallet, show the "Add to Google Wallet" button.
+                // If the card is already added, show a label indicating that.
+                // If the card is provisioning, show the button but disable it (or show a loading indicator).
                 when (card) {
                     CardState.NotAddedToWallet -> GoogleWalletButton(onClick = onAddToWalletClicked)
                     CardState.Provisioning -> GoogleWalletButton(onClick = {})
@@ -83,12 +79,8 @@ fun MainScreen(
                     CardState.Disabled -> CardLabel(R.string.disabled)
                     CardState.NotSupported -> CardLabel(R.string.does_not_support_google_pay)
                     CardState.Loading -> Loading()
-                    is CardState.Error -> CardLabel(card.message ?: "An error occurred")
+                    is CardState.Error -> ErrorState(card.message ?: "An error occurred", onRetryClicked)
                 }
-                Spacer(Modifier.height(20.dp))
-                ProvisioningMethodSelectionButtons(
-                    onMethodSelected = onMethodSelected
-                )
             }
         }
     }
@@ -136,34 +128,11 @@ fun CardLabel(@StringRes stringResourceId: Int) {
 }
 
 @Composable
-fun ProvisioningMethodSelectionButtons(
-    modifier: Modifier = Modifier,
-    onMethodSelected: (ProvisioningMethod) -> Unit
-) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
-    SingleChoiceSegmentedButtonRow(
-        modifier = modifier
-            .padding(horizontal = 40.dp)
-            .fillMaxWidth()
-    ) {
-        ProvisioningMethod.entries.forEachIndexed { index, provisioningMethod ->
-            SegmentedButton(
-                shape = SegmentedButtonDefaults.itemShape(
-                    index = index,
-                    count = ProvisioningMethod.entries.size,
-                ),
-                onClick = {
-                    selectedIndex = index
-                    onMethodSelected(ProvisioningMethod.entries[index])
-                },
-                selected = selectedIndex == index,
-                label = {
-                    Text(
-                        text = stringResource(provisioningMethod.labelResource),
-                        maxLines = 1,
-                    )
-                },
-            )
+fun ErrorState(message: String, onRetryClicked: () -> Unit) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        CardLabel(message)
+        Button(onClick = onRetryClicked) {
+            Text(stringResource(R.string.retry))
         }
     }
 }
@@ -175,6 +144,6 @@ fun MainScreenPreview() {
         lastFour = "1234",
         card = CardState.NotAddedToWallet,
         onAddToWalletClicked = {},
-        onMethodSelected = {},
+        onRetryClicked = {}
     )
 }

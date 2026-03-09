@@ -1,0 +1,9 @@
+## Changed
+* Public API changes:
+    * Added OpcProvider type
+    * Added function CardProvisioning.provision(cardDisplayName, cardAddress, opcProvider)
+    * Deprecated sealed class CreateSdkOutputResult
+    * Deprecated function CardProvisioning.createSdkOutput()
+    * Deprecated function CardProvisioning.provision(sdkInput, cardDisplayName, cardAddress)
+* Updated README files to reflect public API changes
+* Updated example app to reflect public API changes

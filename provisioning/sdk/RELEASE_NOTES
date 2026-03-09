@@ -1,5 +1,0 @@
-## Changed
-* Relocated maven artifacts from `com.adyen.issuing:provisioning` to `com.adyen.issuing.provisioning:provisioning-sdk`
-* Internal changes:
-    * Updated Gradle: 8.11.1 -> 8.14.3
-    * Updated Kotlin: 2.1.21 -> 2.3.0
